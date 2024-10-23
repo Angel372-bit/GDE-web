@@ -10,7 +10,7 @@ public class Reader {
         try{
             // Para vscode
             //String carpetadescargas =System.getProperty("user.home")+File.separator+"Desktop"+"/lab 5/"+"Empleados.txt";
-            BufferedReader lector = new BufferedReader(new FileReader("Lab5/src/Empleados.txt"));
+            BufferedReader lector = new BufferedReader(new FileReader("auth/Empleados.txt"));
             String line = "";
             while ((line=lector.readLine()) != null){
                 String[] bloque = line.split(" ");
@@ -41,7 +41,7 @@ public class Reader {
         try{
             // Para vscode
             //String contra =System.getProperty("user.home")+File.separator+"Desktop"+"/lab 5/"+"Password.txt";
-            BufferedReader lector = new BufferedReader(new FileReader("Lab5/src/Password.txt"));
+            BufferedReader lector = new BufferedReader(new FileReader("auth/Password.txt"));
             String line = "";
             while ((line=lector.readLine()) != null){
                 String[] bloque = line.split(" ");
@@ -68,13 +68,13 @@ public class Reader {
         try{
 
             // Se crea su bandeja de entrada
-            String ruta = "lab 5/" + String.valueOf(id) + "BA.txt";
+            String ruta = "database/" + String.valueOf(id) + "BA.txt";
             File file = new File(ruta);
             file.createNewFile();
 
 
-            BufferedWriter escritor1 = new BufferedWriter(new FileWriter("Lab5/src/Empleados.txt", true));
-            BufferedWriter escritor = new BufferedWriter(new FileWriter("Lab5/src/Password.txt", true));
+            BufferedWriter escritor1 = new BufferedWriter(new FileWriter("auth/Empleados.txt", true));
+            BufferedWriter escritor = new BufferedWriter(new FileWriter("auth/Password.txt", true));
 
             String names = name.replace(" ", "-");
             escritor1.write(names + " " + id );
@@ -102,7 +102,7 @@ public class Reader {
     static void cambiarPass(String id, String nuevaPass) {
         try {
             //actualizar contenido en password
-            BufferedReader leer = new BufferedReader(new FileReader("Lab5/src/Password.txt"));
+            BufferedReader leer = new BufferedReader(new FileReader("auth/Password.txt"));
             StringBuilder contenido = new StringBuilder();
             String line = "";
             while ((line=leer.readLine()) != null){
@@ -115,7 +115,7 @@ public class Reader {
             }
             leer.close();
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Lab5/src/Password.txt", false));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("auth/Password.txt", false));
             writer.write(contenido.toString());
             writer.close();
 
@@ -130,7 +130,7 @@ public class Reader {
     static void elimiarUsuario(String u){
         try{
             // actualizar el archivo password
-            BufferedReader lector = new BufferedReader(new FileReader("Lab5/src/Password.txt"));
+            BufferedReader lector = new BufferedReader(new FileReader("auth/Password.txt"));
             StringBuilder contenido = new StringBuilder();
             String line;
             while ((line= lector.readLine()) != null){
@@ -140,13 +140,13 @@ public class Reader {
             }
             lector.close();
 
-            BufferedWriter escribir = new BufferedWriter(new FileWriter("Lab5/src/Password.txt"));
+            BufferedWriter escribir = new BufferedWriter(new FileWriter("auth/Password.txt"));
             escribir.write(contenido.toString());
             escribir.close();
 
 
             // actualizar archivo Empleados
-            BufferedReader lector1 = new BufferedReader(new FileReader("Lab5/src/Empleados.txt"));
+            BufferedReader lector1 = new BufferedReader(new FileReader("auth/Empleados.txt"));
             StringBuilder contenido1 = new StringBuilder();
             String line1;
             while ((line1=lector1.readLine()) != null){
@@ -156,7 +156,7 @@ public class Reader {
                 }
             }
             lector1.close();
-            BufferedWriter escribir1 = new BufferedWriter(new FileWriter("Lab5/src/Empleados.txt"));
+            BufferedWriter escribir1 = new BufferedWriter(new FileWriter("auth/Empleados.txt"));
             escribir1.write(contenido1.toString());
             escribir1.close();
             System.out.println("Usuario eliminado correctamente.");
